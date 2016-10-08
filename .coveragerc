@@ -1,0 +1,5 @@
+[run]
+include = wild_bills/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin
