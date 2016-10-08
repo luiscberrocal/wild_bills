@@ -12,8 +12,8 @@ from ipware.ip import get_real_ip, get_ip
 
 from .geoip import geo_ip_finder
 from .utils import organization_manager
-from .forms import DebtForm, BillForm, WildBillsProfileForm, PaymentForm
-from .models import Debt, Bill, WildBillsProfile, Payment
+from .forms import DebtForm, BillForm, PaymentForm
+from .models import Debt, Bill, Payment
 import logging
 
 logger = logging.getLogger(__name__)
@@ -127,36 +127,6 @@ class BillListView(LoginRequiredMixin, ListView):
         return qs.order_by('due_date')
 
 
-class WildBillsProfileCreateView(CreateView):
-
-    model = WildBillsProfile
-    context_object_name = 'wbprofile'
-    form_class = WildBillsProfileForm
-    success_url = '/'
-
-    def get_initial(self):
-        ip = get_ip(self.request)
-        logger.debug('Client IP: %s' % ip)
-        country_code = geo_ip_finder.get_country_code(ip)
-        logger.debug('Client country: %s' % country_code)
-        if country_code == 'XX':
-            logger.warn('Had to coerce country to Panama')
-            country_code = 'PA'
-        data = {'country': country_code}
-        return data
-
-
-class WildBillsProfileUpdateView(LoginRequiredMixin, UpdateView):
-    model = WildBillsProfile
-    context_object_name = 'wbprofile'
-    form_class = WildBillsProfileForm
-    success_url = '/'
-
-    def get(self, request, *args, **kwargs):
-        if request.user.pk:
-            if request.user.pk != int(kwargs['pk']):
-                return HttpResponseForbidden(_('You cannot modify other profiles but your own!!'))
-        return super(WildBillsProfileUpdateView, self).get(request, *args, **kwargs)
 
 
 class PaymentCreateView(LoginRequiredMixin, UserFormKwargsMixin, CreateView):

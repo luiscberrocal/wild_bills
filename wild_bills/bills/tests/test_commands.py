@@ -1,8 +1,9 @@
 from django.core.management import call_command
 from django.test import TestCase
 
+from ...users.tests.factories import UserFactory
 from ..models import Bill
-from .factories import WildBillsProfileFactory, OrganizationFactory, MonthlyDebtFactory
+from .factories import  OrganizationFactory, MonthlyDebtFactory
 
 
 class CommandsTestCase(TestCase):
@@ -11,7 +12,7 @@ class CommandsTestCase(TestCase):
         # self.client = Client()
         self.username = 'obiwan'
         self.password = 'password'
-        self.profile = WildBillsProfileFactory.create(username=self.username,
+        self.profile = UserFactory.create(username=self.username,
                                                       password=self.password,
                                                       email='obiwan@jedi.org')
         self.organization = OrganizationFactory.create(owner=self.profile)

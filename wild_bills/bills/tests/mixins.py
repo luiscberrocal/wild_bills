@@ -1,6 +1,6 @@
 from django.utils import translation
 
-from .factories import WildBillsProfileFactory
+from ...users.tests.factories import UserFactory
 
 
 class UserSetupMixin(object):
@@ -10,12 +10,12 @@ class UserSetupMixin(object):
 
         self.username = 'obiwan'
         self.password = 'password'
-        self.profile = WildBillsProfileFactory.create(username=self.username,
+        self.profile = UserFactory.create(username=self.username,
                                                       password=self.password,
                                                       email='obiwan@jedi.org',
                                                       first_name='Obiwan',
                                                       last_name='Kenobi',)
-        self.windu_profile = WildBillsProfileFactory.create(username='macewindu',
+        self.windu_profile = UserFactory.create(username='macewindu',
                                                       password='password',
                                                       email='mace@jedi.org',
                                                       first_name='Mace',

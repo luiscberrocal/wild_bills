@@ -21,8 +21,8 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-class WildBillsProfile(AbstractUser):
-    country = CountryField(verbose_name= _('Country'))
+# class WildBillsProfile(AbstractUser):
+#     country = CountryField(verbose_name= _('Country'))
 
 
 class Organization(models.Model):

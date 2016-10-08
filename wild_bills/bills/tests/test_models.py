@@ -4,9 +4,10 @@ from django.db.models import Q
 from django.test import TestCase
 from django.utils import translation, timezone
 
+from ...users.tests.factories import UserFactory
 from ..utils import frequency_calculator
 from ..models import Organization, Debt, PaymentFrequency, Bill
-from .factories import WildBillsProfileFactory, OrganizationFactory, MonthlyDebtFactory, MonthlyPaymentFrequencyFactory, \
+from .factories import OrganizationFactory, MonthlyDebtFactory, MonthlyPaymentFrequencyFactory, \
     MonthlyBillFactory
 
 
@@ -14,7 +15,7 @@ class TestWilbBillsProfile(TestCase):
 
     def test_create(self):
         translation.activate('en')
-        profile = WildBillsProfileFactory.create()
+        profile = UserFactory.create()
         country_name = str(profile.country.name)
         self.assertEqual('Panama', country_name)
         #self.assertEqual(1, Organization.objects.count())
@@ -22,17 +23,17 @@ class TestWilbBillsProfile(TestCase):
     def test_create_with_username(self):
         username = 'obiwan'
         password = 'password'
-        profile = WildBillsProfileFactory.create(username=username,
+        profile = UserFactory.create(username=username,
                                                       password=password,
                                                       email='obiwan@jedi.org')
         self.assertEqual(username, profile.username)
 
 
     def test_members_create(self):
-        profile = WildBillsProfileFactory.create()
+        profile = UserFactory.create()
         organization = OrganizationFactory.create(owner=profile)
         self.assertEqual(0, organization.members.count())
-        profile2 = WildBillsProfileFactory.create()
+        profile2 = UserFactory.create()
         owned_org = profile.owned_organizations.all()[0]
         owned_org.members.add(profile2)
         owned_org.save()
@@ -58,7 +59,7 @@ class TestDebt(TestCase):
         self.assertEqual(5, Debt.objects.count())
 
     def test_create_batch_different_users(self):
-        profile = WildBillsProfileFactory.create()
+        profile = UserFactory.create()
         organization = OrganizationFactory.create(owner=profile)
         MonthlyDebtFactory.create_batch(10, organization=organization)
         MonthlyDebtFactory.create_batch(5)
@@ -115,7 +116,7 @@ class TestDebt(TestCase):
         There should only be 2 debts with upaid or under paid bills
         :return:
         '''
-        profile = WildBillsProfileFactory.create()
+        profile = UserFactory.create()
         organization = OrganizationFactory.create(owner=profile)
         created_debts = MonthlyDebtFactory.create_batch(10, organization=organization)
         bills_created = created_debts[0].create_bills(1)
@@ -144,7 +145,7 @@ class TestDebt(TestCase):
         There should only be 2 debts with upaid or under paid bills
         :return:
         '''
-        profile = WildBillsProfileFactory.create()
+        profile = UserFactory.create()
         organization = OrganizationFactory.create(owner=profile)
         created_debts = MonthlyDebtFactory.create_batch(10, organization=organization)
         bills_created = created_debts[0].create_bills(1)

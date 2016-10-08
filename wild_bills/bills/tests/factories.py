@@ -7,40 +7,12 @@ from factory.django import DjangoModelFactory
 from factory.fuzzy import FuzzyText
 from faker import Factory as FakerFactory
 
-from ..models import WildBillsProfile, Organization, PaymentFrequency, Debt, Bill
+from ...users.tests.factories import UserFactory
+from ..models import Organization, PaymentFrequency, Debt, Bill
 
 __author__ = 'luiscberrocal'
 
 faker = FakerFactory.create()
-
-
-class WildBillsProfileFactory(DjangoModelFactory):
-
-    class Meta:
-        model = WildBillsProfile
-
-    first_name = LazyAttribute(lambda x: faker.first_name())
-    last_name = LazyAttribute(lambda x: faker.last_name())
-    password = 'user1'
-    country = 'PA'
-
-    @lazy_attribute
-    def username(self):
-        return '%s.%s' % (self.first_name.lower(), self.last_name.lower())
-
-    @lazy_attribute
-    def email(self):
-        return '%s@example.com' % self.username
-
-    @classmethod
-    def _prepare(cls, create, **kwargs):
-        password = kwargs.pop('password', None)
-        user = super(WildBillsProfileFactory, cls)._prepare(create, **kwargs)
-        if password:
-            user.set_password(password)
-            if create:
-                user.save()
-        return user
 
 
 class OrganizationFactory(DjangoModelFactory):
@@ -48,12 +20,12 @@ class OrganizationFactory(DjangoModelFactory):
     class Meta:
         model = Organization
 
-    owner = SubFactory(WildBillsProfileFactory)
+    owner = SubFactory(UserFactory)
 
     @lazy_attribute
     def legal_name(self):
         return self.display_name
-    
+
     @lazy_attribute
     def display_name(self):
         if self.owner.last_name:

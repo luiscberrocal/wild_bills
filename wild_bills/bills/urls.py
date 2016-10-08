@@ -1,13 +1,13 @@
 from django.conf.urls import url
 
 from wild_bills.bills.views import DebtCreateView, DebtDetailView, DebtUpdateView, DebtListView, BillCreateView, BillListView, \
-    BillDetailView, BillUpdateView, WildBillsProfileCreateView, WildBillsProfileUpdateView, DebtDeleteView, \
+    BillDetailView, BillUpdateView, DebtDeleteView, \
     PaymentCreateView
 
 
 urlpatterns = [
-    url(r'^profile/create/$', WildBillsProfileCreateView.as_view(), name='profile-create'),
-    url(r'^profile/(?P<pk>[\d]*)/update$', WildBillsProfileUpdateView.as_view(), name='profile-update'),
+    #url(r'^profile/create/$', WildBillsProfileCreateView.as_view(), name='profile-create'),
+    #url(r'^profile/(?P<pk>[\d]*)/update$', WildBillsProfileUpdateView.as_view(), name='profile-update'),
     url(r'^debt/$', DebtListView.as_view(), name='debt-list'),
     url(r'^debt/create/$', DebtCreateView.as_view(), name='debt-create'),
     url(r'^debt/(?P<pk>[\d]*)/$', DebtDetailView.as_view(), name='debt-detail'),

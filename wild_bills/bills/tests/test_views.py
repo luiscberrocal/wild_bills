@@ -7,8 +7,9 @@ from django.test import override_settings, TestCase
 from django.utils import translation, timezone
 from with_asserts.mixin import AssertHTMLMixin
 
-from ..models import Debt, WildBillsProfile, Bill
-from .factories import WildBillsProfileFactory, MonthlyDebtFactory, OrganizationFactory, \
+from ...users.tests.factories import UserFactory
+from ..models import Debt, Bill
+from .factories import MonthlyDebtFactory, OrganizationFactory, \
     MonthlyPaymentFrequencyFactory
 import logging
 
@@ -268,77 +269,77 @@ class TestBillViews(AssertHTMLMixin, UserSetupMixin, TestCase):
         self.assertNotHTML(response, 'tr.row td#due-date-%s' % bill.pk)
 
 
-class TestWildBillsProfileViews(UserSetupMixin, AssertHTMLMixin, TestCase):
-    def test_create_profile_one_password_different(self):
-        response = self.client.get(reverse('bills:profile-create'))
-        self.assertEqual(response.status_code, 200)
-        self.profile_dict['password2'] = 'poli'
-        i18n_results = [('en', "The two password fields didn't match."),
-                        ('es', 'Las dos contraseñas no son iguales.')]
-        for lang in i18n_results:
-            translation.activate(lang[0])
-            response = self.client.post(reverse('bills:profile-create'), data=self.profile_dict)
-            self.assertEqual(response.status_code, 200)
-            with self.assertHTML(response, 'div.has-error div.help-block') as (elem,):
-                self.assertEqual(lang[1], elem.text.strip())
-
-    def test_create_profile_password2_blank(self):
-        response = self.client.get(reverse('bills:profile-create'))
-        self.assertEqual(response.status_code, 200)
-        self.profile_dict['password2'] = ''
-        i18n_results = [('en', "The two password fields didn't match."),
-                        ('es', 'Las dos contraseñas no son iguales.')]
-        for lang in i18n_results:
-            translation.activate(lang[0])
-            response = self.client.post(reverse('bills:profile-create'), data=self.profile_dict)
-            self.assertEqual(response.status_code, 200)
-            with self.assertHTML(response, 'div.has-error div.help-block') as (elem,):
-                self.assertEqual(lang[1], elem.text.strip())
-
-    def test_create_profile_password1_blank(self):
-        response = self.client.get(reverse('bills:profile-create'))
-        self.assertEqual(response.status_code, 200)
-        self.profile_dict['password1'] = ''
-        i18n_results = [('en', "The two password fields didn't match."),
-                        ('es', 'Las dos contraseñas no son iguales.')]
-        for lang in i18n_results:
-            translation.activate(lang[0])
-            response = self.client.post(reverse('bills:profile-create'), data=self.profile_dict)
-            self.assertEqual(response.status_code, 200)
-            with self.assertHTML(response, 'div.has-error div.help-block') as (elem,):
-                self.assertEqual(lang[1], elem.text.strip())
-
-    def test_create_profile(self):
-        response = self.client.get(reverse('bills:profile-create'))
-        self.assertEqual(response.status_code, 200)
-        response = self.client.post(reverse('bills:profile-create'), data=self.profile_dict)
-        self.assertEqual(response.status_code, 302)
-        created_profile = WildBillsProfile.objects.get(username=self.profile_dict['username'])
-        self.assertIsNotNone(created_profile)
-
-    def test_update_profile(self):
-        login = self.client.login(username=self.username,
-                                  password=self.password)
-        self.assertTrue(login)
-        response = self.client.get(reverse('bills:profile-update', kwargs={'pk': self.profile.pk}))
-        self.assertEqual(response.status_code, 200)
-        with self.assertHTML(response, 'input[id="id_username"]') as (elem,):
-            self.assertEqual(self.username, elem.value)
-        profile_dict = model_to_dict(self.profile)
-        profile_dict['country'] = 'US'
-        response = self.client.post(reverse('bills:profile-update', kwargs={'pk': self.profile.pk}), data=profile_dict)
-        self.assertEqual(response.status_code, 302)
-
-        updated_profile = WildBillsProfile.objects.get(pk=self.profile.pk)
-        self.assertEqual('US', updated_profile.country.code)
-
-    def test_update_profile_permission_denied(self):
-        other_profile = WildBillsProfileFactory.create()
-        login = self.client.login(username=self.username,
-                                  password=self.password)
-        self.assertTrue(login)
-        response = self.client.get(reverse('bills:profile-update', kwargs={'pk': other_profile.pk}))
-        self.assertEqual(response.status_code, 403)
+# class TestWildBillsProfileViews(UserSetupMixin, AssertHTMLMixin, TestCase):
+#     def test_create_profile_one_password_different(self):
+#         response = self.client.get(reverse('bills:profile-create'))
+#         self.assertEqual(response.status_code, 200)
+#         self.profile_dict['password2'] = 'poli'
+#         i18n_results = [('en', "The two password fields didn't match."),
+#                         ('es', 'Las dos contraseñas no son iguales.')]
+#         for lang in i18n_results:
+#             translation.activate(lang[0])
+#             response = self.client.post(reverse('bills:profile-create'), data=self.profile_dict)
+#             self.assertEqual(response.status_code, 200)
+#             with self.assertHTML(response, 'div.has-error div.help-block') as (elem,):
+#                 self.assertEqual(lang[1], elem.text.strip())
+#
+#     def test_create_profile_password2_blank(self):
+#         response = self.client.get(reverse('bills:profile-create'))
+#         self.assertEqual(response.status_code, 200)
+#         self.profile_dict['password2'] = ''
+#         i18n_results = [('en', "The two password fields didn't match."),
+#                         ('es', 'Las dos contraseñas no son iguales.')]
+#         for lang in i18n_results:
+#             translation.activate(lang[0])
+#             response = self.client.post(reverse('bills:profile-create'), data=self.profile_dict)
+#             self.assertEqual(response.status_code, 200)
+#             with self.assertHTML(response, 'div.has-error div.help-block') as (elem,):
+#                 self.assertEqual(lang[1], elem.text.strip())
+#
+#     def test_create_profile_password1_blank(self):
+#         response = self.client.get(reverse('bills:profile-create'))
+#         self.assertEqual(response.status_code, 200)
+#         self.profile_dict['password1'] = ''
+#         i18n_results = [('en', "The two password fields didn't match."),
+#                         ('es', 'Las dos contraseñas no son iguales.')]
+#         for lang in i18n_results:
+#             translation.activate(lang[0])
+#             response = self.client.post(reverse('bills:profile-create'), data=self.profile_dict)
+#             self.assertEqual(response.status_code, 200)
+#             with self.assertHTML(response, 'div.has-error div.help-block') as (elem,):
+#                 self.assertEqual(lang[1], elem.text.strip())
+#
+#     def test_create_profile(self):
+#         response = self.client.get(reverse('bills:profile-create'))
+#         self.assertEqual(response.status_code, 200)
+#         response = self.client.post(reverse('bills:profile-create'), data=self.profile_dict)
+#         self.assertEqual(response.status_code, 302)
+#         created_profile = User.objects.get(username=self.profile_dict['username'])
+#         self.assertIsNotNone(created_profile)
+#
+#     def test_update_profile(self):
+#         login = self.client.login(username=self.username,
+#                                   password=self.password)
+#         self.assertTrue(login)
+#         response = self.client.get(reverse('bills:profile-update', kwargs={'pk': self.profile.pk}))
+#         self.assertEqual(response.status_code, 200)
+#         with self.assertHTML(response, 'input[id="id_username"]') as (elem,):
+#             self.assertEqual(self.username, elem.value)
+#         profile_dict = model_to_dict(self.profile)
+#         profile_dict['country'] = 'US'
+#         response = self.client.post(reverse('bills:profile-update', kwargs={'pk': self.profile.pk}), data=profile_dict)
+#         self.assertEqual(response.status_code, 302)
+#
+#         updated_profile = User.objects.get(pk=self.profile.pk)
+#         self.assertEqual('US', updated_profile.country.code)
+#
+#     def test_update_profile_permission_denied(self):
+#         other_profile = UserFactory.create()
+#         login = self.client.login(username=self.username,
+#                                   password=self.password)
+#         self.assertTrue(login)
+#         response = self.client.get(reverse('bills:profile-update', kwargs={'pk': other_profile.pk}))
+#         self.assertEqual(response.status_code, 403)
 
 
 class TestHomePageView(UserSetupMixin, AssertHTMLMixin, TestCase):
