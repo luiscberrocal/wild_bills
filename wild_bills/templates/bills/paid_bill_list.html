@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load staticfiles bootstrap3 i18n %}
+{% block extra_css %}
+    {{ form.media }}
+{% endblock extra_css %}
+{% block page_title %}
+    {% trans 'Paid Bills' %}
+{% endblock page_title %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr class="row">
+
+            <th>
+                {% trans 'Debt' %}
+            </th>
+            <th>
+                {% trans 'Amount' %}
+            </th>
+            <th>
+                {% trans 'Due Date' %}
+            </th>
+            <th>
+                {% trans 'Payments' %}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for bill in bills %}
+            <tr class="row">
+                <td class="col-md-2" id="payee-{{ bill.pk }}">
+                    {{ bill.debt.payee }}
+                </td>
+                <td class="col-md-2" id="amount-due-{{ bill.pk }}">
+                    {{ bill.amount_due }}
+                </td>
+                <td class="col-md-2" id="due-date-{{ bill.pk }}">
+                    {{ bill.due_date|date:"d-b-Y" }}
+                </td>
+                <td class="col-md-2" id="payments-{{ bill.pk }}">
+                    {% for payment in bill.payments.all %}
+                        <div>
+                            {{ payment.amount }}
+                        </div>
+                        <div>
+                            {{ payment.date_paid|date:'d-b-Y' }}
+                        </div>
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        {% if is_paginated %}
+            <tfoot>
+            <tr class="row">
+                <td colspan="4">
+                    <nav>
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li>
+                                    <a href="{% url 'bills:bill-list-paid' %}?page={{ page_obj.previous_page_number }}"
+                                       aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="disabled">
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% for i in paginator.page_range %}
+                                <li {% if page_obj.number == i %} class="active" {% endif %}>
+                                    <a href="{% url 'bills:bill-list-paid' %}?page={{ i }}">{{ i }}</a>
+                                </li>
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li>
+                                    <a href="{% url 'bills:bill-list-paid' %}?page={{ page_obj.next_page_number }}"
+                                       aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="disabled">
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </td>
+            </tr>
+            </tfoot>
+
+        {% endif %}
+
+    </table>
+
+{% endblock content %}
+
+{% block extra_js %}
+{% endblock extra_js %}

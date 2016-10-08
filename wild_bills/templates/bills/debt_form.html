@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load staticfiles bootstrap3 i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block extra_css %}
+    {{ form.media }}
+{% endblock extra_css %}
+{% block page_title %}
+    {% if debt == None %}
+        {% trans 'Add a new debt' %}
+    {% else %}
+        {% trans 'Editing debt to ' %}{{ debt.payee }}
+    {% endif %}
+
+{% endblock page_title %}
+
+{% block content %}
+    {% if messages %}
+        {% regroup messages|dictsort:"tags" by tags as message_list %}
+
+        {% for tags in message_list %}
+            <div class="alert alert-{{ tags.grouper }}">
+                <div class="container">
+                    <ul>
+                        {% for message in tags.list %}
+                            <li>
+                                {{ message }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                {% bootstrap_field form.payee %}
+            </div>
+            <div class="col-md-4">
+                {% bootstrap_field form.amount %}
+            </div>
+            <div class="col-md-2">
+                {% bootstrap_field form.fixed_amount %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {% bootstrap_field form.category %}
+                </div>
+            <div class="col-md-6">
+                {% bootstrap_field form.description %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {% bootstrap_field form.frequency %}
+            </div>
+            <div class="col-md-6">
+                {% bootstrap_field form.frequency_values %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="id_start_date" class="control-label">{{ form.start_date.label }}</label>
+                    <input
+                            type="text" value="{{ form.start_date.value|date:'Y-m-d'  }}" title=""
+                            placeholder="{{ form.start_date.label }}" name="start_date"
+                            id="id_start_date" class="form-control datepicker">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    <label for="{{ form.end_date.id_for_label }}" class="control-label">{{ form.end_date.label }}</label>
+                    <input type="text" title="" placeholder="{{ form.end_date.label }}" name="end_date"
+                           id="{{ form.end_date.id_for_label }}"
+                           value="{{ form.end_date.value|date:'Y-m-d'  }}" class="form-control datepicker">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {% bootstrap_field form.organization %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input class="btn btn-primary" role="button" type="submit" name="_save" value="{% trans 'Save' %}">
+                <input class="btn btn-primary" role="button" type="submit" name="_add_another"
+                       value="{% trans 'Save and add another' %}">
+                {% if debt == None %}
+                    <a id="cancel-btn" class="btn btn-primary" role="button"
+                       href="{% url 'bills:debt-list' %}">{% trans 'Cancel' %}</a>
+                {% else %}
+                    <a id="cancel-btn" class="btn btn-primary" role="button"
+                       href="{% url 'bills:debt-detail' debt.pk %}">{% trans 'Cancel' %}</a>
+                {% endif %}
+            </div>
+        </div>
+
+    </form>
+{% endblock content %}
+
+{% block extra_js %}
+    <script>
+        $.datepicker.setDefaults({
+            showOn: "both",
+        });
+        $.datepicker.setDefaults($.datepicker.regional["{{ LANGUAGE_CODE }}"]);
+        $(".datepicker").datepicker({
+            dateFormat: "yy-mm-dd",
+            altFormat: "yy-mm-dd"
+        });
+    </script>
+{% endblock extra_js %}

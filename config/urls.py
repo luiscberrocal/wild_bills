@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import django
 from django.conf import settings
 from django.conf.urls import include, url
+from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
@@ -13,7 +15,7 @@ urlpatterns = [
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
 
     # Django Admin, use {% url 'admin:index' %}
-    url(settings.ADMIN_URL, admin.site.urls),
+
 
     # User management
     url(r'^users/', include('wild_bills.users.urls', namespace='users')),
@@ -23,6 +25,13 @@ urlpatterns = [
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += i18n_patterns(
+                             url(r'^$', TemplateView.as_view(template_name='base.html'), name='home'),
+                             url(settings.ADMIN_URL, admin.site.urls),
+                             url(r'^bills/', include('wild_bills.bills.urls', namespace='bills')),
+                             url(r'^categories/', include('wild_bills.categories.urls', namespace='categories')),
+                             )
 
 if settings.DEBUG:
     # This allows the error pages to be debugged during development, just visit

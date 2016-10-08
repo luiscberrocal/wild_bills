@@ -1,8 +1,9 @@
 from django.conf.urls import url
 
-from .views import DebtCreateView, DebtDetailView, DebtUpdateView, DebtListView, BillCreateView, BillListView, \
+from wild_bills.bills.views import DebtCreateView, DebtDetailView, DebtUpdateView, DebtListView, BillCreateView, BillListView, \
     BillDetailView, BillUpdateView, WildBillsProfileCreateView, WildBillsProfileUpdateView, DebtDeleteView, \
     PaymentCreateView
+
 
 urlpatterns = [
     url(r'^profile/create/$', WildBillsProfileCreateView.as_view(), name='profile-create'),

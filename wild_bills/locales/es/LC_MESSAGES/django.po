@@ -1,0 +1,416 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-12-26 09:39-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: bills/forms.py:16 bills/models.py:61 bills/models.py:100
+#: templates/bills/debt_detail.html:53 templates/bills/debt_list.html:27
+msgid "Frequency"
+msgstr "Frecuencia"
+
+#: bills/forms.py:17
+msgid "Values"
+msgstr "Valores"
+
+#: bills/forms.py:18
+msgid "Days of the month separated by commas"
+msgstr "Días del mes separados por comas"
+
+#: bills/forms.py:19 bills/models.py:62
+msgid "Start date"
+msgstr "Fecha de Inicio"
+
+#: bills/forms.py:36
+msgid ""
+"You cannot modify a Debt if you do not own it or are a member of the "
+"organization"
+msgstr ""
+"No puede modificar una deuda si no es su dueño es parte de la organización"
+
+#: bills/forms.py:62
+msgid "Password"
+msgstr "Contraseña"
+
+#: bills/forms.py:63
+msgid "Repeat password"
+msgstr "Repetir contraseña"
+
+#: bills/forms.py:76 bills/forms.py:78
+msgid "The two password fields didn't match."
+msgstr "Las dos contraseñas no son iguales."
+
+#: bills/forms.py:80
+msgid "Pasword is required"
+msgstr "La contraseña es requerida"
+
+#: bills/forms.py:91
+#, python-format
+msgid "%s Family"
+msgstr "Familia %s"
+
+#: bills/models.py:25
+msgid "Country"
+msgstr "País"
+
+#: bills/models.py:29
+msgid "Display name"
+msgstr "Nombre de despliegue"
+
+#: bills/models.py:30
+msgid "Name that you communicate"
+msgstr "El nombre que usualmente se utiliza"
+
+#: bills/models.py:31
+msgid "Legal name"
+msgstr "Nombre legal"
+
+#: bills/models.py:32
+msgid "Official name. Only relevant if the organization is a company"
+msgstr "Nombre oficial. Solo es relevante si la organización es una compañia"
+
+#: bills/models.py:36
+msgid "Owner"
+msgstr "Dueño"
+
+#: bills/models.py:40
+msgid "Members"
+msgstr "Miembros"
+
+#: bills/models.py:54
+msgid "Monthly"
+msgstr "Mensual"
+
+#: bills/models.py:55
+msgid "Weekly"
+msgstr "Semanal"
+
+#: bills/models.py:56
+msgid "Biweekly"
+msgstr "Bisemanal"
+
+#: bills/models.py:58
+msgid "Frequency values"
+msgstr "Valores de frecuencia"
+
+#: bills/models.py:59
+msgid ""
+"Which days of the month or days of the week the payment should occur. Values "
+"separated by comma"
+msgstr ""
+"En que días del mes o días de la semana debe ocurrir el pago. Valores "
+"separados por coma "
+
+#: bills/models.py:83
+#, python-format
+msgid "Pay every month on %s of the month"
+msgstr "Pagar cada mes los %s"
+
+#: bills/models.py:85
+#, python-format
+msgid "Pay every week on %s"
+msgstr "Pagar cada semana los %s"
+
+#: bills/models.py:87
+#, python-format
+msgid "Pay every two weeks on %s"
+msgstr "Pagar cada semana los %s"
+
+#: bills/models.py:89
+msgid "No frequency has been selected"
+msgstr "No se ha seleccionado una frecuencia"
+
+#: bills/models.py:93 templates/bills/debt_detail.html:13
+#: templates/bills/debt_list.html:18
+msgid "Payee"
+msgstr "Deudor"
+
+#: bills/models.py:94 templates/bills/debt_detail.html:21
+#: templates/bills/debt_list.html:21
+msgid "Description"
+msgstr "Descripción"
+
+#: bills/models.py:95 bills/models.py:129 bills/models.py:162
+#: templates/bills/bill_list.html:21 templates/bills/debt_detail.html:29
+#: templates/bills/debt_list.html:24 templates/bills/paid_bill_list.html:19
+msgid "Amount"
+msgstr "Cantidad"
+
+#: bills/models.py:96
+msgid "Fixed amount"
+msgstr "Cantidad fija"
+
+#: bills/models.py:98 templates/bills/debt_detail.html:45
+msgid "Organization"
+msgstr "Organización"
+
+#: bills/models.py:101
+#, fuzzy
+#| msgid "End Date"
+msgid "End date"
+msgstr "Fecha Final"
+
+#: bills/models.py:132
+#, fuzzy
+#| msgid "Debt Detail"
+msgid "Detail"
+msgstr "Detalle de la Deuda"
+
+#: bills/models.py:135
+#, fuzzy
+#| msgid "Over paid"
+msgid "Date paid"
+msgstr "Sobre pagada"
+
+#: bills/models.py:136
+msgid "Reference"
+msgstr "Referencia"
+
+#: bills/models.py:147
+msgid "Payment of {}"
+msgstr "Pago de {}"
+
+#: bills/models.py:156
+msgid "Unpaid"
+msgstr "Sin pagar"
+
+#: bills/models.py:157
+msgid "Paid"
+msgstr "Pagada"
+
+#: bills/models.py:158
+msgid "Under paid"
+msgstr "Sub pagada"
+
+#: bills/models.py:159
+msgid "Over paid"
+msgstr "Sobre pagada"
+
+#: bills/models.py:161 templates/bills/bill_list.html:18
+#: templates/bills/paid_bill_list.html:16
+msgid "Debt"
+msgstr "Deuda"
+
+#: bills/models.py:165
+#, fuzzy
+#| msgid "Due Date"
+msgid "Due date"
+msgstr "Fecha de Vencimiento"
+
+#: bills/models.py:166 templates/bills/paid_bill_list.html:25
+#, fuzzy
+#| msgid "Payment of {}"
+msgid "Payments"
+msgstr "Pago de {}"
+
+#: bills/models.py:167
+msgid "Status"
+msgstr "Estado"
+
+#: bills/views.py:29
+msgid "You cannot view a debt that is not part of your organization!"
+msgstr "No puede ver una deuda si no es parte de la organización dueña!"
+
+#: bills/views.py:62
+#, fuzzy, python-brace-format
+#| msgid "Payment of {}"
+msgid "Debt to {payee} for {amount} was created"
+msgstr "Pago al {payee} por {amount}"
+
+#: bills/views.py:158
+msgid "You cannot modify other profiles but your own!!"
+msgstr "No puede modificar un perfil que no es el suyo!!"
+
+#: bills/views.py:173
+#, fuzzy, python-brace-format
+#| msgid "Payment of {}"
+msgid "Payment to {payee} for {amount}"
+msgstr "Pago al {payee} por {amount}"
+
+#: templates/403.html:3 templates/403.html.py:5
+msgid "Permission Denied"
+msgstr "Permiso Denegado"
+
+#: templates/base.html:49
+msgid "Home"
+msgstr "Inicio"
+
+#: templates/base.html:51
+msgid "About"
+msgstr "A cerca de"
+
+#: templates/base.html:52
+msgid "Contact Us"
+msgstr "Contáctenos"
+
+#: templates/base.html:56
+msgid "Debts"
+msgstr "Deudas"
+
+#: templates/base.html:58 templates/bills/debt_list.html:7
+msgid "Debt List"
+msgstr "Lista de Deudas"
+
+#: templates/base.html:59
+msgid "Due Payments"
+msgstr "Pagos Pendientes"
+
+#: templates/base.html:60
+#, fuzzy
+#| msgid "Payment of {}"
+msgid "Payments Made"
+msgstr "Pago de {}"
+
+#: templates/base.html:62
+msgid "Add Debt"
+msgstr "Agregar Deuda"
+
+#: templates/base.html:69
+msgid "My Profile"
+msgstr "Mi Perfil"
+
+#: templates/base.html:70
+msgid "Logout"
+msgstr "Salir"
+
+#: templates/base.html:74
+msgid "Login"
+msgstr "Firmarse"
+
+#: templates/base.html:90
+msgid "Go"
+msgstr ""
+
+#: templates/base.html:106
+msgid ""
+"\n"
+"                    Your bill helper app coming soon!!\n"
+"                "
+msgstr ""
+"\n"
+"                    Tu adminsitrador de deudas viene pronto!!\n"
+"                "
+
+#: templates/base.html:113
+msgid "Sign up"
+msgstr "Registrarse"
+
+#: templates/base.html:117
+msgid "Version "
+msgstr "Versión"
+
+#: templates/bills/bill_list.html:7
+msgid "Bill List"
+msgstr "Lista de Cuentas"
+
+#: templates/bills/bill_list.html:15
+msgid "Action"
+msgstr "Acción"
+
+#: templates/bills/bill_list.html:24 templates/bills/paid_bill_list.html:22
+msgid "Due Date"
+msgstr "Fecha de Vencimiento"
+
+#: templates/bills/bill_list.html:34
+msgid "Pay"
+msgstr "Pagar"
+
+#: templates/bills/debt_confirm_delete.html:3
+msgid "Deleting Debt for "
+msgstr "Borrando deuda con "
+
+#: templates/bills/debt_confirm_delete.html:7
+#, fuzzy
+#| msgid "Are you sure you want to delete debt to "
+msgid "Are you sure you want to delete debt to"
+msgstr "Está seguro que quiere borrar la deuda con"
+
+#: templates/bills/debt_confirm_delete.html:8
+msgid "Confirm"
+msgstr "Confirmar"
+
+#: templates/bills/debt_detail.html:7
+msgid "Debt Detail"
+msgstr "Detalle de la Deuda"
+
+#: templates/bills/debt_detail.html:37
+msgid "Is Amount Fixed?"
+msgstr "La cantidad es fija?"
+
+#: templates/bills/debt_detail.html:61
+msgid "End Date"
+msgstr "Fecha Final"
+
+#: templates/bills/debt_detail.html:70
+msgid "Edit"
+msgstr "Editar"
+
+#: templates/bills/debt_detail.html:73
+msgid "Delete"
+msgstr "Borrar"
+
+#: templates/bills/debt_form.html:9
+msgid "Add a new debt"
+msgstr "Agregar Deuda"
+
+#: templates/bills/debt_form.html:11
+#, fuzzy
+#| msgid "Deleting Debt for "
+msgid "Editing debt to "
+msgstr "Borrando deuda con "
+
+#: templates/bills/debt_form.html:86 templates/bills/payment_form.html:20
+#: templates/bills/wildbillsprofile_form.html:44
+msgid "Save"
+msgstr "Guardar"
+
+#: templates/bills/debt_form.html:87
+msgid "Save and add another"
+msgstr "Guardar y agregar otro"
+
+#: templates/bills/debt_form.html:89 templates/bills/debt_form.html.py:92
+#: templates/bills/wildbillsprofile_form.html:45
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: templates/bills/debt_list.html:15
+msgid "No"
+msgstr ""
+
+#: templates/bills/paid_bill_list.html:7
+msgid "Paid Bills"
+msgstr "Cuentas Pagadas"
+
+#: templates/bills/payment_form.html:7
+#, fuzzy
+#| msgid "Payment of {}"
+msgid "Payment"
+msgstr "Pago de {}"
+
+#: templates/bills/wildbillsprofile_form.html:7
+msgid "Wild Bills Profile"
+msgstr "Perfil de Wild Bills"
+
+#: wildbills_project/settings/base.py:81
+msgid "English"
+msgstr "Ingles"
+
+#: wildbills_project/settings/base.py:82
+msgid "Spanish"
+msgstr "Español"
+
+#~ msgid "Create a Debt"
+#~ msgstr "Crear Deuda"

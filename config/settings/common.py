@@ -39,14 +39,17 @@ THIRD_PARTY_APPS = (
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
+    'parler',
+    'bootstrap3',
+    'django_countries',
 )
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
     # custom users app
     'wild_bills.users.apps.UsersConfig',
-    'wild_bills.bills',
-    'wild_bills.categories',
+    'wild_bills.bills.apps.BillsConfig',
+    'wild_bills.categories.apps.CategoriesConfig',
     # Your stuff: custom apps go here
 )
 
@@ -115,7 +118,13 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 TIME_ZONE = 'America/Panama'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
+
+ugettext = lambda s: s
+LANGUAGES = (
+    ('en', ugettext('English')),
+    ('es', ugettext('Spanish')),
+)
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
@@ -246,7 +255,7 @@ LOGIN_REDIRECT_URL = 'users:redirect'
 LOGIN_URL = 'account_login'
 
 # SLUGLIFIER
-AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
+#AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
 
 ########## CELERY
 INSTALLED_APPS += ('wild_bills.taskapp.celery.CeleryConfig',)
@@ -265,3 +274,20 @@ ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
+PARLER_DEFAULT_LANGUAGE_CODE = 'en'
+
+PARLER_LANGUAGES = {
+    1: (
+        {'code': 'en',},
+        {'code': 'es',},
+    ),
+    'default': {
+        'fallbacks': ['en'],          # defaults to PARLER_DEFAULT_LANGUAGE_CODE
+        'hide_untranslated': False,   # the default; let .active_translations() return fallbacks too.
+    }
+}
+
+
+LOCALE_PATHS = (
+    str(APPS_DIR.path('locales')),
+)

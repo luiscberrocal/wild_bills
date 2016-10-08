@@ -49,3 +49,4 @@ django-autoslug==1.9.3
 django-countries==4.0
 Delorean==0.6.0
 django-ipware==1.1.6
+django-bootstrap3==7.1.0

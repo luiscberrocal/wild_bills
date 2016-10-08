@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load staticfiles bootstrap3 i18n %}
+{% block extra_css %}
+{{ form.media }}
+{% endblock extra_css %}
+{% block page_title %}
+{% trans 'Bill List' %}
+{% endblock page_title %}
+
+{% block content %}
+<table class="table">
+    <thead>
+    <tr class="row">
+        <th>
+            {% trans 'Action' %}
+        </th>
+        <th>
+            {% trans 'Debt' %}
+        </th>
+         <th>
+            {% trans 'Amount' %}
+        </th>
+         <th>
+            {% trans 'Due Date' %}
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for bill in bills %}
+    <tr class="row">
+        <td class="col-md-1">
+            <a  href="{% url 'bills:payment-create' bill.pk %}"
+                class="btn btn-primary btn-small" role="button">
+               {% trans "Pay" %}
+            </a>
+        </td>
+        <td class="col-md-2" id="payee-{{ bill.pk }}">
+            {{ bill.debt.payee }}
+        </td>
+        <td class="col-md-2" id="amount-due-{{ bill.pk }}">
+            {{ bill.amount_due }}
+        </td>
+    <td class="col-md-2" id="due-date-{{ bill.pk }}">
+            {{ bill.due_date }}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+{% endblock content %}
+
+{% block extra_js %}
+{% endblock extra_js %}
