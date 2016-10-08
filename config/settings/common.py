@@ -45,6 +45,8 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     # custom users app
     'wild_bills.users.apps.UsersConfig',
+    'wild_bills.bills',
+    'wild_bills.categories',
     # Your stuff: custom apps go here
 )
 
@@ -238,7 +240,8 @@ SOCIALACCOUNT_ADAPTER = 'wild_bills.users.adapters.SocialAccountAdapter'
 
 # Custom user app defaults
 # Select the correct user model
-AUTH_USER_MODEL = 'users.User'
+#AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'bills.WildBillsProfile'
 LOGIN_REDIRECT_URL = 'users:redirect'
 LOGIN_URL = 'account_login'
 

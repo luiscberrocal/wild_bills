@@ -1,5 +1,5 @@
 from django.core.management import BaseCommand
-from categories.utils import DefaultCategoryFactory
+from ...utils import DefaultCategoryFactory
 
 class Command(BaseCommand):
     def add_arguments(self, parser):

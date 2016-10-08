@@ -1,4 +1,4 @@
-from categories.models import Category
+from .models import Category
 
 
 class DefaultCategoryFactory(object):

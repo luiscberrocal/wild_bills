@@ -1,4 +1,4 @@
-from bills.tests.factories import WildBillsProfileFactory
+from ...bills.tests.factories import WildBillsProfileFactory
 from ..models import Category
 from faker import Factory as FakerFactory
 from ..utils import DefaultCategoryFactory
