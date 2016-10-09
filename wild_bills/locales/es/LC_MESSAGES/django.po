@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-26 09:39-0500\n"
+"POT-Creation-Date: 2016-10-09 12:34-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,96 +17,80 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: bills/forms.py:16 bills/models.py:61 bills/models.py:100
-#: templates/bills/debt_detail.html:53 templates/bills/debt_list.html:27
+#: config/settings/common.py:127
+msgid "English"
+msgstr "Ingles"
+
+#: config/settings/common.py:128
+msgid "Spanish"
+msgstr "Español"
+
+#: wild_bills/bills/forms.py:16 wild_bills/bills/models.py:60
+#: wild_bills/bills/models.py:99 wild_bills/templates/bills/debt_detail.html:61
+#: wild_bills/templates/bills/debt_list.html:30
 msgid "Frequency"
 msgstr "Frecuencia"
 
-#: bills/forms.py:17
+#: wild_bills/bills/forms.py:17
 msgid "Values"
 msgstr "Valores"
 
-#: bills/forms.py:18
+#: wild_bills/bills/forms.py:18
 msgid "Days of the month separated by commas"
 msgstr "Días del mes separados por comas"
 
-#: bills/forms.py:19 bills/models.py:62
+#: wild_bills/bills/forms.py:19 wild_bills/bills/models.py:61
 msgid "Start date"
 msgstr "Fecha de Inicio"
 
-#: bills/forms.py:36
+#: wild_bills/bills/forms.py:37
 msgid ""
 "You cannot modify a Debt if you do not own it or are a member of the "
 "organization"
 msgstr ""
 "No puede modificar una deuda si no es su dueño es parte de la organización"
 
-#: bills/forms.py:62
-msgid "Password"
-msgstr "Contraseña"
-
-#: bills/forms.py:63
-msgid "Repeat password"
-msgstr "Repetir contraseña"
-
-#: bills/forms.py:76 bills/forms.py:78
-msgid "The two password fields didn't match."
-msgstr "Las dos contraseñas no son iguales."
-
-#: bills/forms.py:80
-msgid "Pasword is required"
-msgstr "La contraseña es requerida"
-
-#: bills/forms.py:91
-#, python-format
-msgid "%s Family"
-msgstr "Familia %s"
-
-#: bills/models.py:25
-msgid "Country"
-msgstr "País"
-
-#: bills/models.py:29
+#: wild_bills/bills/models.py:29
 msgid "Display name"
 msgstr "Nombre de despliegue"
 
-#: bills/models.py:30
+#: wild_bills/bills/models.py:30
 msgid "Name that you communicate"
 msgstr "El nombre que usualmente se utiliza"
 
-#: bills/models.py:31
+#: wild_bills/bills/models.py:31
 msgid "Legal name"
 msgstr "Nombre legal"
 
-#: bills/models.py:32
+#: wild_bills/bills/models.py:32
 msgid "Official name. Only relevant if the organization is a company"
 msgstr "Nombre oficial. Solo es relevante si la organización es una compañia"
 
-#: bills/models.py:36
+#: wild_bills/bills/models.py:36 wild_bills/categories/models.py:60
 msgid "Owner"
 msgstr "Dueño"
 
-#: bills/models.py:40
+#: wild_bills/bills/models.py:39
 msgid "Members"
 msgstr "Miembros"
 
-#: bills/models.py:54
+#: wild_bills/bills/models.py:53
 msgid "Monthly"
 msgstr "Mensual"
 
-#: bills/models.py:55
+#: wild_bills/bills/models.py:54
 msgid "Weekly"
 msgstr "Semanal"
 
-#: bills/models.py:56
+#: wild_bills/bills/models.py:55
 msgid "Biweekly"
 msgstr "Bisemanal"
 
-#: bills/models.py:58
+#: wild_bills/bills/models.py:57
 msgid "Frequency values"
 msgstr "Valores de frecuencia"
 
-#: bills/models.py:59
+#: wild_bills/bills/models.py:58
 msgid ""
 "Which days of the month or days of the week the payment should occur. Values "
 "separated by comma"
@@ -114,187 +98,475 @@ msgstr ""
 "En que días del mes o días de la semana debe ocurrir el pago. Valores "
 "separados por coma "
 
-#: bills/models.py:83
+#: wild_bills/bills/models.py:82
 #, python-format
 msgid "Pay every month on %s of the month"
 msgstr "Pagar cada mes los %s"
 
-#: bills/models.py:85
+#: wild_bills/bills/models.py:84
 #, python-format
 msgid "Pay every week on %s"
 msgstr "Pagar cada semana los %s"
 
-#: bills/models.py:87
+#: wild_bills/bills/models.py:86
 #, python-format
 msgid "Pay every two weeks on %s"
 msgstr "Pagar cada semana los %s"
 
-#: bills/models.py:89
+#: wild_bills/bills/models.py:88
 msgid "No frequency has been selected"
 msgstr "No se ha seleccionado una frecuencia"
 
-#: bills/models.py:93 templates/bills/debt_detail.html:13
-#: templates/bills/debt_list.html:18
+#: wild_bills/bills/models.py:92 wild_bills/templates/bills/debt_detail.html:21
+#: wild_bills/templates/bills/debt_list.html:18
 msgid "Payee"
 msgstr "Deudor"
 
-#: bills/models.py:94 templates/bills/debt_detail.html:21
-#: templates/bills/debt_list.html:21
+#: wild_bills/bills/models.py:93 wild_bills/templates/bills/debt_detail.html:29
+#: wild_bills/templates/bills/debt_list.html:24
 msgid "Description"
 msgstr "Descripción"
 
-#: bills/models.py:95 bills/models.py:129 bills/models.py:162
-#: templates/bills/bill_list.html:21 templates/bills/debt_detail.html:29
-#: templates/bills/debt_list.html:24 templates/bills/paid_bill_list.html:19
+#: wild_bills/bills/models.py:94 wild_bills/bills/models.py:130
+#: wild_bills/bills/models.py:163 wild_bills/templates/bills/bill_list.html:21
+#: wild_bills/templates/bills/debt_detail.html:37
+#: wild_bills/templates/bills/debt_list.html:27
+#: wild_bills/templates/bills/paid_bill_list.html:19
 msgid "Amount"
 msgstr "Cantidad"
 
-#: bills/models.py:96
+#: wild_bills/bills/models.py:95
 msgid "Fixed amount"
 msgstr "Cantidad fija"
 
-#: bills/models.py:98 templates/bills/debt_detail.html:45
+#: wild_bills/bills/models.py:97 wild_bills/templates/bills/debt_detail.html:53
 msgid "Organization"
 msgstr "Organización"
 
-#: bills/models.py:101
+#: wild_bills/bills/models.py:100
 #, fuzzy
 #| msgid "End Date"
 msgid "End date"
 msgstr "Fecha Final"
 
-#: bills/models.py:132
+#: wild_bills/bills/models.py:101 wild_bills/categories/models.py:66
+#: wild_bills/templates/bills/debt_detail.html:13
+#: wild_bills/templates/bills/debt_list.html:21
+msgid "Category"
+msgstr ""
+
+#: wild_bills/bills/models.py:133
 #, fuzzy
 #| msgid "Debt Detail"
 msgid "Detail"
 msgstr "Detalle de la Deuda"
 
-#: bills/models.py:135
+#: wild_bills/bills/models.py:136
 #, fuzzy
 #| msgid "Over paid"
 msgid "Date paid"
 msgstr "Sobre pagada"
 
-#: bills/models.py:136
+#: wild_bills/bills/models.py:137
 msgid "Reference"
 msgstr "Referencia"
 
-#: bills/models.py:147
+#: wild_bills/bills/models.py:148
 msgid "Payment of {}"
 msgstr "Pago de {}"
 
-#: bills/models.py:156
+#: wild_bills/bills/models.py:157
 msgid "Unpaid"
 msgstr "Sin pagar"
 
-#: bills/models.py:157
+#: wild_bills/bills/models.py:158
 msgid "Paid"
 msgstr "Pagada"
 
-#: bills/models.py:158
+#: wild_bills/bills/models.py:159
 msgid "Under paid"
 msgstr "Sub pagada"
 
-#: bills/models.py:159
+#: wild_bills/bills/models.py:160
 msgid "Over paid"
 msgstr "Sobre pagada"
 
-#: bills/models.py:161 templates/bills/bill_list.html:18
-#: templates/bills/paid_bill_list.html:16
+#: wild_bills/bills/models.py:162 wild_bills/templates/bills/bill_list.html:18
+#: wild_bills/templates/bills/paid_bill_list.html:16
 msgid "Debt"
 msgstr "Deuda"
 
-#: bills/models.py:165
+#: wild_bills/bills/models.py:166
 #, fuzzy
 #| msgid "Due Date"
 msgid "Due date"
 msgstr "Fecha de Vencimiento"
 
-#: bills/models.py:166 templates/bills/paid_bill_list.html:25
+#: wild_bills/bills/models.py:167
+#: wild_bills/templates/bills/paid_bill_list.html:25
 #, fuzzy
 #| msgid "Payment of {}"
 msgid "Payments"
 msgstr "Pago de {}"
 
-#: bills/models.py:167
+#: wild_bills/bills/models.py:168
 msgid "Status"
 msgstr "Estado"
 
-#: bills/views.py:29
+#: wild_bills/bills/views.py:29
 msgid "You cannot view a debt that is not part of your organization!"
 msgstr "No puede ver una deuda si no es parte de la organización dueña!"
 
-#: bills/views.py:62
+#: wild_bills/bills/views.py:62
 #, fuzzy, python-brace-format
 #| msgid "Payment of {}"
 msgid "Debt to {payee} for {amount} was created"
 msgstr "Pago al {payee} por {amount}"
 
-#: bills/views.py:158
-msgid "You cannot modify other profiles but your own!!"
-msgstr "No puede modificar un perfil que no es el suyo!!"
-
-#: bills/views.py:173
+#: wild_bills/bills/views.py:143
 #, fuzzy, python-brace-format
 #| msgid "Payment of {}"
 msgid "Payment to {payee} for {amount}"
 msgstr "Pago al {payee} por {amount}"
 
-#: templates/403.html:3 templates/403.html.py:5
-msgid "Permission Denied"
-msgstr "Permiso Denegado"
+#: wild_bills/categories/models.py:55
+msgid "Name"
+msgstr ""
 
-#: templates/base.html:49
+#: wild_bills/categories/models.py:67
+msgid "Categories"
+msgstr ""
+
+#: wild_bills/templates/account/account_inactive.html:5
+#: wild_bills/templates/account/account_inactive.html:8
+msgid "Account Inactive"
+msgstr ""
+
+#: wild_bills/templates/account/account_inactive.html:10
+msgid "This account is inactive."
+msgstr ""
+
+#: wild_bills/templates/account/email.html:7
+#, fuzzy
+#| msgid "Amount"
+msgid "Account"
+msgstr "Cantidad"
+
+#: wild_bills/templates/account/email.html:10
+msgid "E-mail Addresses"
+msgstr ""
+
+#: wild_bills/templates/account/email.html:13
+msgid "The following e-mail addresses are associated with your account:"
+msgstr ""
+
+#: wild_bills/templates/account/email.html:27
+msgid "Verified"
+msgstr ""
+
+#: wild_bills/templates/account/email.html:29
+msgid "Unverified"
+msgstr ""
+
+#: wild_bills/templates/account/email.html:31
+msgid "Primary"
+msgstr ""
+
+#: wild_bills/templates/account/email.html:37
+msgid "Make Primary"
+msgstr ""
+
+#: wild_bills/templates/account/email.html:38
+msgid "Re-send Verification"
+msgstr ""
+
+#: wild_bills/templates/account/email.html:39
+msgid "Remove"
+msgstr ""
+
+#: wild_bills/templates/account/email.html:46
+msgid "Warning:"
+msgstr ""
+
+#: wild_bills/templates/account/email.html:46
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+
+#: wild_bills/templates/account/email.html:51
+msgid "Add E-mail Address"
+msgstr ""
+
+#: wild_bills/templates/account/email.html:56
+msgid "Add E-mail"
+msgstr ""
+
+#: wild_bills/templates/account/email.html:66
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr ""
+
+#: wild_bills/templates/account/email_confirm.html:6
+#: wild_bills/templates/account/email_confirm.html:10
+msgid "Confirm E-mail Address"
+msgstr ""
+
+#: wild_bills/templates/account/email_confirm.html:16
+#, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
+"address for user %(user_display)s."
+msgstr ""
+
+#: wild_bills/templates/account/email_confirm.html:20
+#: wild_bills/templates/bills/debt_confirm_delete.html:8
+msgid "Confirm"
+msgstr "Confirmar"
+
+#: wild_bills/templates/account/email_confirm.html:27
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a href="
+"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+
+#: wild_bills/templates/account/login.html:7
+#: wild_bills/templates/account/login.html:11
+#: wild_bills/templates/account/login.html:44
+#, fuzzy
+#| msgid "Sign up"
+msgid "Sign In"
+msgstr "Registrarse"
+
+#: wild_bills/templates/account/login.html:16
+#, python-format
+msgid ""
+"Please sign in with one\n"
+"of your existing third party accounts. Or, <a href=\"%(signup_url)s\">sign "
+"up</a>\n"
+"for a %(site_name)s account and sign in below:"
+msgstr ""
+
+#: wild_bills/templates/account/login.html:26
+msgid "or"
+msgstr ""
+
+#: wild_bills/templates/account/login.html:33
+#, python-format
+msgid ""
+"If you have not created an account yet, then please\n"
+"<a href=\"%(signup_url)s\">sign up</a> first."
+msgstr ""
+
+#: wild_bills/templates/account/login.html:43
+#, fuzzy
+#| msgid "Password"
+msgid "Forgot Password?"
+msgstr "Contraseña"
+
+#: wild_bills/templates/account/logout.html:5
+#: wild_bills/templates/account/logout.html:8
+#: wild_bills/templates/account/logout.html:17
+#, fuzzy
+#| msgid "Sign up"
+msgid "Sign Out"
+msgstr "Registrarse"
+
+#: wild_bills/templates/account/logout.html:10
+#, fuzzy
+#| msgid "Are you sure you want to delete debt to "
+msgid "Are you sure you want to sign out?"
+msgstr "Está seguro que quiere borrar la deuda con"
+
+#: wild_bills/templates/account/password_change.html:6
+#: wild_bills/templates/account/password_change.html:9
+#: wild_bills/templates/account/password_change.html:14
+#: wild_bills/templates/account/password_reset_from_key.html:5
+#: wild_bills/templates/account/password_reset_from_key.html:8
+#: wild_bills/templates/account/password_reset_from_key_done.html:4
+#: wild_bills/templates/account/password_reset_from_key_done.html:7
+#, fuzzy
+#| msgid "Password"
+msgid "Change Password"
+msgstr "Contraseña"
+
+#: wild_bills/templates/account/password_reset.html:7
+#: wild_bills/templates/account/password_reset.html:11
+#: wild_bills/templates/account/password_reset_done.html:6
+#: wild_bills/templates/account/password_reset_done.html:9
+#, fuzzy
+#| msgid "Password"
+msgid "Password Reset"
+msgstr "Contraseña"
+
+#: wild_bills/templates/account/password_reset.html:16
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+
+#: wild_bills/templates/account/password_reset.html:21
+#, fuzzy
+#| msgid "Repeat password"
+msgid "Reset My Password"
+msgstr "Repetir contraseña"
+
+#: wild_bills/templates/account/password_reset.html:24
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr ""
+
+#: wild_bills/templates/account/password_reset_done.html:15
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: wild_bills/templates/account/password_reset_from_key.html:8
+msgid "Bad Token"
+msgstr ""
+
+#: wild_bills/templates/account/password_reset_from_key.html:12
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: wild_bills/templates/account/password_reset_from_key.html:18
+#, fuzzy
+#| msgid "Repeat password"
+msgid "change password"
+msgstr "Repetir contraseña"
+
+#: wild_bills/templates/account/password_reset_from_key.html:21
+#: wild_bills/templates/account/password_reset_from_key_done.html:8
+msgid "Your password is now changed."
+msgstr ""
+
+#: wild_bills/templates/account/password_set.html:6
+#: wild_bills/templates/account/password_set.html:9
+#: wild_bills/templates/account/password_set.html:14
+#, fuzzy
+#| msgid "Password"
+msgid "Set Password"
+msgstr "Contraseña"
+
+#: wild_bills/templates/account/signup.html:6
+#, fuzzy
+#| msgid "Sign up"
+msgid "Signup"
+msgstr "Registrarse"
+
+#: wild_bills/templates/account/signup.html:9
+#: wild_bills/templates/account/signup.html:19
+#, fuzzy
+#| msgid "Sign up"
+msgid "Sign Up"
+msgstr "Registrarse"
+
+#: wild_bills/templates/account/signup.html:11
+#, python-format
+msgid ""
+"Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+
+#: wild_bills/templates/account/signup_closed.html:5
+#: wild_bills/templates/account/signup_closed.html:8
+msgid "Sign Up Closed"
+msgstr ""
+
+#: wild_bills/templates/account/signup_closed.html:10
+msgid "We are sorry, but the sign up is currently closed."
+msgstr ""
+
+#: wild_bills/templates/account/verification_sent.html:5
+#: wild_bills/templates/account/verification_sent.html:8
+#: wild_bills/templates/account/verified_email_required.html:5
+#: wild_bills/templates/account/verified_email_required.html:8
+msgid "Verify Your E-mail Address"
+msgstr ""
+
+#: wild_bills/templates/account/verification_sent.html:10
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: wild_bills/templates/account/verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+
+#: wild_bills/templates/account/verified_email_required.html:16
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside this e-mail. Please\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: wild_bills/templates/account/verified_email_required.html:20
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+
+#: wild_bills/templates/base.html:49
 msgid "Home"
 msgstr "Inicio"
 
-#: templates/base.html:51
+#: wild_bills/templates/base.html:51
 msgid "About"
 msgstr "A cerca de"
 
-#: templates/base.html:52
+#: wild_bills/templates/base.html:52
 msgid "Contact Us"
 msgstr "Contáctenos"
 
-#: templates/base.html:56
+#: wild_bills/templates/base.html:56
 msgid "Debts"
 msgstr "Deudas"
 
-#: templates/base.html:58 templates/bills/debt_list.html:7
+#: wild_bills/templates/base.html:58
+#: wild_bills/templates/bills/debt_list.html:7
 msgid "Debt List"
 msgstr "Lista de Deudas"
 
-#: templates/base.html:59
+#: wild_bills/templates/base.html:59
 msgid "Due Payments"
 msgstr "Pagos Pendientes"
 
-#: templates/base.html:60
+#: wild_bills/templates/base.html:60
 #, fuzzy
 #| msgid "Payment of {}"
 msgid "Payments Made"
 msgstr "Pago de {}"
 
-#: templates/base.html:62
+#: wild_bills/templates/base.html:62
 msgid "Add Debt"
 msgstr "Agregar Deuda"
 
-#: templates/base.html:69
-msgid "My Profile"
-msgstr "Mi Perfil"
-
-#: templates/base.html:70
+#: wild_bills/templates/base.html:69
 msgid "Logout"
 msgstr "Salir"
 
-#: templates/base.html:74
+#: wild_bills/templates/base.html:73
 msgid "Login"
 msgstr "Firmarse"
 
-#: templates/base.html:90
+#: wild_bills/templates/base.html:74 wild_bills/templates/base.html:113
+msgid "Sign up"
+msgstr "Registrarse"
+
+#: wild_bills/templates/base.html:90
 msgid "Go"
 msgstr ""
 
-#: templates/base.html:106
+#: wild_bills/templates/base.html:106
 msgid ""
 "\n"
 "                    Your bill helper app coming soon!!\n"
@@ -304,113 +576,139 @@ msgstr ""
 "                    Tu adminsitrador de deudas viene pronto!!\n"
 "                "
 
-#: templates/base.html:113
-msgid "Sign up"
-msgstr "Registrarse"
-
-#: templates/base.html:117
+#: wild_bills/templates/base.html:117
 msgid "Version "
 msgstr "Versión"
 
-#: templates/bills/bill_list.html:7
+#: wild_bills/templates/bills/bill_list.html:7
 msgid "Bill List"
 msgstr "Lista de Cuentas"
 
-#: templates/bills/bill_list.html:15
+#: wild_bills/templates/bills/bill_list.html:15
 msgid "Action"
 msgstr "Acción"
 
-#: templates/bills/bill_list.html:24 templates/bills/paid_bill_list.html:22
+#: wild_bills/templates/bills/bill_list.html:24
+#: wild_bills/templates/bills/paid_bill_list.html:22
 msgid "Due Date"
 msgstr "Fecha de Vencimiento"
 
-#: templates/bills/bill_list.html:34
+#: wild_bills/templates/bills/bill_list.html:34
 msgid "Pay"
 msgstr "Pagar"
 
-#: templates/bills/debt_confirm_delete.html:3
+#: wild_bills/templates/bills/debt_confirm_delete.html:3
 msgid "Deleting Debt for "
 msgstr "Borrando deuda con "
 
-#: templates/bills/debt_confirm_delete.html:7
+#: wild_bills/templates/bills/debt_confirm_delete.html:7
 #, fuzzy
 #| msgid "Are you sure you want to delete debt to "
 msgid "Are you sure you want to delete debt to"
 msgstr "Está seguro que quiere borrar la deuda con"
 
-#: templates/bills/debt_confirm_delete.html:8
-msgid "Confirm"
-msgstr "Confirmar"
-
-#: templates/bills/debt_detail.html:7
+#: wild_bills/templates/bills/debt_detail.html:7
 msgid "Debt Detail"
 msgstr "Detalle de la Deuda"
 
-#: templates/bills/debt_detail.html:37
+#: wild_bills/templates/bills/debt_detail.html:45
 msgid "Is Amount Fixed?"
 msgstr "La cantidad es fija?"
 
-#: templates/bills/debt_detail.html:61
+#: wild_bills/templates/bills/debt_detail.html:69
 msgid "End Date"
 msgstr "Fecha Final"
 
-#: templates/bills/debt_detail.html:70
+#: wild_bills/templates/bills/debt_detail.html:78
 msgid "Edit"
 msgstr "Editar"
 
-#: templates/bills/debt_detail.html:73
+#: wild_bills/templates/bills/debt_detail.html:81
 msgid "Delete"
 msgstr "Borrar"
 
-#: templates/bills/debt_form.html:9
+#: wild_bills/templates/bills/debt_form.html:9
 msgid "Add a new debt"
 msgstr "Agregar Deuda"
 
-#: templates/bills/debt_form.html:11
+#: wild_bills/templates/bills/debt_form.html:11
 #, fuzzy
 #| msgid "Deleting Debt for "
 msgid "Editing debt to "
 msgstr "Borrando deuda con "
 
-#: templates/bills/debt_form.html:86 templates/bills/payment_form.html:20
-#: templates/bills/wildbillsprofile_form.html:44
+#: wild_bills/templates/bills/debt_form.html:91
+#: wild_bills/templates/bills/payment_form.html:40
+#: wild_bills/templates/bills/wildbillsprofile_form.html:44
 msgid "Save"
 msgstr "Guardar"
 
-#: templates/bills/debt_form.html:87
+#: wild_bills/templates/bills/debt_form.html:93
 msgid "Save and add another"
 msgstr "Guardar y agregar otro"
 
-#: templates/bills/debt_form.html:89 templates/bills/debt_form.html.py:92
-#: templates/bills/wildbillsprofile_form.html:45
+#: wild_bills/templates/bills/debt_form.html:96
+#: wild_bills/templates/bills/debt_form.html:99
+#: wild_bills/templates/bills/payment_form.html:42
+#: wild_bills/templates/bills/wildbillsprofile_form.html:45
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: templates/bills/debt_list.html:15
+#: wild_bills/templates/bills/debt_list.html:15
 msgid "No"
 msgstr ""
 
-#: templates/bills/paid_bill_list.html:7
+#: wild_bills/templates/bills/paid_bill_list.html:7
 msgid "Paid Bills"
 msgstr "Cuentas Pagadas"
 
-#: templates/bills/payment_form.html:7
+#: wild_bills/templates/bills/payment_form.html:8
 #, fuzzy
 #| msgid "Payment of {}"
 msgid "Payment"
 msgstr "Pago de {}"
 
-#: templates/bills/wildbillsprofile_form.html:7
+#: wild_bills/templates/bills/wildbillsprofile_form.html:7
 msgid "Wild Bills Profile"
 msgstr "Perfil de Wild Bills"
 
-#: wildbills_project/settings/base.py:81
-msgid "English"
-msgstr "Ingles"
+#: wild_bills/users/forms.py:10
+msgid "Password"
+msgstr "Contraseña"
 
-#: wildbills_project/settings/base.py:82
-msgid "Spanish"
-msgstr "Español"
+#: wild_bills/users/forms.py:11
+msgid "Repeat password"
+msgstr "Repetir contraseña"
+
+#: wild_bills/users/forms.py:24 wild_bills/users/forms.py:26
+msgid "The two password fields didn't match."
+msgstr "Las dos contraseñas no son iguales."
+
+#: wild_bills/users/forms.py:28
+msgid "Pasword is required"
+msgstr "La contraseña es requerida"
+
+#: wild_bills/users/forms.py:49
+#, python-format
+msgid "%s Family"
+msgstr "Familia %s"
+
+#: wild_bills/users/models.py:17
+msgid "Name of User"
+msgstr ""
+
+#: wild_bills/users/models.py:18
+msgid "Country"
+msgstr "País"
+
+#~ msgid "You cannot modify other profiles but your own!!"
+#~ msgstr "No puede modificar un perfil que no es el suyo!!"
+
+#~ msgid "Permission Denied"
+#~ msgstr "Permiso Denegado"
+
+#~ msgid "My Profile"
+#~ msgstr "Mi Perfil"
 
 #~ msgid "Create a Debt"
 #~ msgstr "Crear Deuda"
