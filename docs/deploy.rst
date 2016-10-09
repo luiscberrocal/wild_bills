@@ -7,7 +7,7 @@ This is where you describe how the project is deployed in production.
 Heroku
 ^^^^^^^
 
-..
+First time you create the site
 
 ::
 
@@ -36,3 +36,9 @@ Heroku
     heroku run python manage.py check --deploy
     heroku run python manage.py createsuperuser
     heroku open
+
+After the first deploy::
+
+    git push heroku master
+    heroku run python manage.py migrate
+    heroku run python manage.py check --deploy
