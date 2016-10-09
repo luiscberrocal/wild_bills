@@ -71,7 +71,7 @@
                     </li>
                 {% else %}
                     <li><a href="{% url 'account_login' %}?next=/">{% trans 'Login' %}</a></li>
-                    <li><a href="{% url 'account_signup' %}?next=/">{% trans 'Login' %}</a></li>
+                    <li><a href="{% url 'account_signup' %}?next=/">{% trans 'Sign up' %}</a></li>
                 {% endif %}
                 <li>
                     <form action="{% url 'set_language' %}" method="post" class="navbar-form navbar-right">
