@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load staticfiles bootstrap3 i18n %}
+{% block extra_css %}
+    {{ form.media }}
+{% endblock extra_css %}
+{% block page_title %}
+    {% trans 'Debt List' %}
+{% endblock page_title %}
+
+{% block content %}
+<table class="table">
+    <thead>
+    <tr class="row">
+        <th>
+            {% trans 'No' %}
+        </th>
+        <th>
+            {% trans 'Payee' %}
+        </th>
+        <th>
+            {% trans 'Category' %}
+        </th>
+        <th>
+            {% trans 'Description' %}
+        </th>
+        <th>
+            {% trans 'Amount' %}
+        </th>
+        <th>
+            {% trans 'Frequency' %}
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for debt in debts %}
+            <tr class="row">
+                <td class="col-md-1">
+                    <a href="{% url 'bills:debt-detail' debt.pk %}">
+                    {{ forloop.counter }}
+                    </a>
+                </td>
+                <td class="col-md-2">
+                    {{ debt.payee }}
+                </td>
+                 <td class="col-md-2">
+                    {{ debt.category }}
+                </td>
+            <td class="col-md-2">
+                    {{ debt.description }}
+                </td>
+            <td class="col-md-2">
+                    {{ debt.amount }}
+                </td>
+            <td class="col-md-2">
+                    {{ debt.frequency }}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+{% endblock content %}
+
+{% block extra_js %}
+{% endblock extra_js %}

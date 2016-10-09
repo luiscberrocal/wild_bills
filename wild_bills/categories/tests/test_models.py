@@ -3,7 +3,7 @@ from django.utils import translation
 from parler.utils import get_active_language_choices
 from parler.utils.conf import LanguagesSetting
 
-from categories.tests.factories import CategoryFactory, category_factory
+from .factories import CategoryFactory, category_factory
 from ..models import Category
 
 

@@ -1,4 +1,4 @@
-from bills.tests.factories import WildBillsProfileFactory
+from ...users.tests.factories import UserFactory
 from ..models import Category
 from faker import Factory as FakerFactory
 from ..utils import DefaultCategoryFactory
@@ -12,7 +12,7 @@ class CategoryFactory(DefaultCategoryFactory):
         if not name:
             name = faker.word()
         if not owner and is_public == False:
-            owner = WildBillsProfileFactory.create()
+            owner = UserFactory.create()
         if not language:
             language = self.languages[0]
         category = Category.objects.create(name=name, owner=owner, is_public=is_public,

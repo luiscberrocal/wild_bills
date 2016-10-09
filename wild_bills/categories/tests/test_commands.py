@@ -1,7 +1,7 @@
 from django.core.management import call_command
 from django.test import TestCase
 
-from categories.models import Category
+from ..models import Category
 
 
 class CommandsTestCase(TestCase):

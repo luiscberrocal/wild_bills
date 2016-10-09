@@ -1,107 +1,140 @@
-{% load staticfiles i18n %}<!DOCTYPE html>
+{% load staticfiles i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block title %}Wild Bills{% endblock title %}</title>
+    <title>{% block title %}wildbills{% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <!-- Le styles -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/jquery-ui.min.css' %}" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+    </style>
+
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    {% block css %}
-    <!-- Latest compiled and minified Bootstrap 4 Alpha 4 CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+    <!-- This file store project specific CSS -->
+    <link href="{% static 'css/wildbills_project.css' %}" rel="stylesheet">
 
-    <!-- Your stuff: Third-party CSS libraries go here -->
-    
-    <!-- This file stores project-specific CSS -->
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
-    
-    {% endblock %}
+    <!-- Use this to quickly test CSS changes in a template,
+        then move to wildbills_project.css -->
+    {% block extra_css %}{% endblock extra_css %}
+</head>
 
-  </head>
+<body>
 
-  <body>
-
-    <div class="m-b-1">
-      <nav class="navbar navbar-dark navbar-static-top bg-inverse">
-        <div class="container">
-          <a class="navbar-brand" href="/">Wild Bills</a>
-          <button type="button" class="navbar-toggler hidden-sm-up pull-xs-right" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
-            &#9776;
-          </button>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-toggleable-xs" id="bs-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">About</a>
-              </li>
-            </ul>
-
-            <ul class="nav navbar-nav pull-xs-right">
-              {% if request.user.is_authenticated %}
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
-                </li>
-              {% else %}
-                <li class="nav-item">
-                  <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
-                </li>
-                <li class="nav-item">
-                  <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
-                </li>
-              {% endif %}
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </div>
-
+<div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Wild Bills</a>
+        </div>
+        <div class="collapse navbar-collapse">
 
-      {% if messages %}
-          {% for message in messages %}
-              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
-          {% endfor %}
-      {% endif %}
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">{% trans 'Home' %}</a></li>
 
-      {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
-      {% endblock content %}
+                <li><a href="#about">{% trans 'About' %} </a></li>
+                <li><a href="#contact">{% trans 'Contact Us' %} </a></li>
+                {% if user.is_authenticated %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">{% trans 'Debts' %} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'bills:debt-list' %}">{% trans 'Debt List' %}</a></li>
+                            <li><a href="{% url 'bills:bill-list' %}">{% trans 'Due Payments' %}</a></li>
+                            <li><a href="{% url 'bills:bill-list-paid' %}">{% trans 'Payments Made' %}</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{% url 'bills:debt-create' %}">{% trans 'Add Debt' %}</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">{{ user.username }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'account_logout' %}?next=/">{% trans 'Logout' %} </a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'account_login' %}?next=/">{% trans 'Login' %}</a></li>
+                    <li><a href="{% url 'account_signup' %}?next=/">{% trans 'Sign up' %}</a></li>
+                {% endif %}
+                <li>
+                    <form action="{% url 'set_language' %}" method="post" class="navbar-form navbar-right">
+                        {% csrf_token %}
+                        <div class="form-group-inline">
+                            <input name="next" type="hidden" value="{{ no_lang_path }}"/>
+                            <select name="language" class="form-control">
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                {% for language in languages %}
+                                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                                            selected="selected"{% endif %}>
+                                        {{ language.name_local }} ({{ language.code }})
+                                    </option>
+                                {% endfor %}
+                            </select>
+                            <input type="submit" class="btn btn-primary" value="{% trans "Go" %}"/>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
 
-    </div> <!-- /container -->
+<div class="container">
 
-    {% block modal %}{% endblock modal %}
+    <h1>{% block page_title %}Wild Bills{% endblock page_title %}</h1>
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    {% block javascript %}
-      <!-- Required by Bootstrap v4 Alpha 4 -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+    {% block content %}
+        <div class="jumbotron">
+            <p>
+                {% blocktrans %}
+                    Your bill helper app coming soon!!
+                {% endblocktrans %}
+            </p>
+            {% if not user.is_authenticated %}
+                <p>
+                    <a href="{% url 'account_signup' %}" class="btn btn-primary btn-lg"
+                       role="button" id="signup-btn">{% trans "Sign up" %}</a>
+                </p>
+            {% endif %}
+        </div>
+        <div class="version">{% trans "Version " %} 0.0.0</div>
+    {% endblock content %}
 
-      <!-- Your stuff: Third-party javascript libraries go here -->
+</div> <!-- /container -->
 
-      <!-- place project specific Javascript in this file -->
-      
-      <script src="{% static 'js/project.js' %}"></script>
-      
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/datepicker-es.js' %}"></script>
 
-    {% endblock javascript %}
-  </body>
+<!-- place project specific Javascript in this file -->
+<script src="{% static 'js/wildbills_project.js' %}"></script>
+
+{% block extra_js %}
+    <script>
+        var version = '2.0.0'
+         $('div.version').text('Version ' + version)
+</script>
+{% endblock extra_js %}
+</body>
 </html>
- 
