@@ -67,6 +67,7 @@ MIDDLEWARE = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'wild_bills.bills.middlewares.AutoSelectOrganizationMiddleware110',
 )
 
 # MIGRATIONS CONFIGURATION

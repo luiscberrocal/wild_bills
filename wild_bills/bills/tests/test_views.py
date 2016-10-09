@@ -119,7 +119,7 @@ class TestDebtViews(AssertHTMLMixin, UserSetupMixin, TestCase):
             translation.activate(lang)
             response = self.client.get(reverse('bills:debt-create'))
             self.assertEqual(response.status_code, 302)
-            url = '/accounts/login/?next=/%s/bills/debt/create/' % lang
+            url = '/{0}/accounts/login/?next=/{0}/bills/debt/create/'.format(lang)
             self.assertEqual(response.url, url)
 
     def test_access_detail_view(self):
