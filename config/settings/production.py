@@ -105,6 +105,8 @@ INSTALLED_APPS += ('gunicorn', )
 # AWS_PRELOAD_METADATA = True
 # INSTALLED_APPS = ('collectfast', ) + INSTALLED_APPS
 
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
 # EMAIL
 # ------------------------------------------------------------------------------
 DEFAULT_FROM_EMAIL = env('DJANGO_DEFAULT_FROM_EMAIL',
