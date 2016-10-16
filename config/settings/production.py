@@ -119,7 +119,7 @@ ANYMAIL = {
     "SENDGRID_USERNAME": env('SENDGRID_USERNAME'),
     "SENDGRID_PASSWORD": env('SENDGRID_PASSWORD'),
 }
-EMAIL_BACKEND = "anymail.backends.sendgrid.SendGridBack"
+EMAIL_BACKEND = "anymail.backends.sendgrid.SendGridBackend"
 
 # TEMPLATE CONFIGURATION
 # ------------------------------------------------------------------------------
