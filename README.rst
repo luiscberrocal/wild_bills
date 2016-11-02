@@ -7,13 +7,18 @@ An app to help you keep track of your bills.
      :target: https://github.com/pydanny/cookiecutter-django/
      :alt: Built with Cookiecutter Django
 
+.. image:: https://requires.io/github/luiscberrocal/wild_bills/requirements.svg?branch=develop
+     :target: https://requires.io/github/luiscberrocal/wild_bills/requirements/?branch=develop
+     :alt: Requirements Status
+
+.. image:: https://travis-ci.org/luiscberrocal/wild_bills.svg?branch=master
+    :target: https://travis-ci.org/luiscberrocal/wild_bills
+
 
 Settings
 --------
 
-Moved to settings_.
-
-.. _settings: http://cookiecutter-django.readthedocs.io/en/latest/settings.html
+The production site is at https://wildbills-2.herokuapp.com/en/
 
 Basic Commands
 --------------
